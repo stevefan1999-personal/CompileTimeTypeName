@@ -22,7 +22,7 @@ class Foo {
 };
 ```
 in the first phase of `make_type_name_array<Foo *>()`(extracting `__FUNCSIG__`) this will give you `classFoo *`, not `class Foo *` for some reason. What, the.
-So we cannot just find `class  `(with space) and erase them, they can be blended in and combined with other identifiers as well, we really have to check for the first `class`(spaceless) and any other reserved words.
+So we cannot just find `class`(with space) and erase them, they can be blended in and combined with other identifiers as well, we really have to check for the first `class`(spaceless) and any other reserved words.
 
 Combining with `const` and `volatile` this is even trickier. 
 This bug has been discovered since 2013, but still, nothing is done by the VS team.
