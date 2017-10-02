@@ -13,7 +13,7 @@ namespace CompileTimeTypeName {
     void print_type_name_array(); // prints the type name byte by byte, then puts newline
 }
 ```
-All spaces, `class`, `struct`, `enum`, `union`, `const`, `__cdecl`, `volatile`, and `T(void)` parameterless `void` will be removed. This is done to better simulate `__PRETTY_FUNCTION__` in other C++ platforms.
+All spaces, `class`, `struct`, `enum`, `union`, `const`, `__cdecl`, `volatile`, and `T(void)` parameterless `void` will be removed. This is done to better simulate `__PRETTY_FUNCTION__` like various other C++ platforms.
 
 ## Bug
 Consider this class
@@ -21,7 +21,9 @@ Consider this class
 class Foo {
 };
 ```
-`make_type_name_array<Foo *>()` will give you `classFoo *`, not `class Foo *` for some reason. 
+in the first phase of `make_type_name_array<Foo *>()`(extracting `__FUNCSIG__`) this will give you `classFoo *`, not `class Foo *` for some reason. What, the.
+So we cannot just find `class `(with space) and erase them, they can be blended in and combined with other identifiers as well, we really have to check for the first `class`(spaceless) and any other reserved words.
+
 Combining with `const` and `volatile` this is even trickier. 
 This bug has been discovered since 2013, but still, nothing is done by the VS team.
 
