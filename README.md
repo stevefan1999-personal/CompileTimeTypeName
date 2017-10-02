@@ -27,4 +27,8 @@ So we cannot just find `class`(with space) and erase them, they can be blended i
 Combining with `const` and `volatile` this is even trickier. 
 This bug has been discovered since 2013, but still, nothing is done by the VS team.
 
-Template is also not supported, as the default template argument was also dumped in in compile time, but you could dangerously turn template type resolve on by `#define COMPILE_TIME_TYPE_NAME_DISABLE_TEMPLATE 1` before including the header
+Template is also not supported, as the default template argument was also dumped in in compile time, it is pretty confusing and spooky when I saw them being printed in the console. But you could still dangerously turn on template type resolve by `#define COMPILE_TIME_TYPE_NAME_DISABLE_TEMPLATE 1` before including the header
+
+## Milestone
+- [ ] Clang
+- [ ] GCC
