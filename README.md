@@ -8,10 +8,10 @@ I have used a pretty dumb algorithm to extract the type in `__FUNCSIG__`. Sadly 
 namespace CompileTimeTypeName {
     template<class T>
     constexpr auto make_type_name_array() -> std::array<char, <extracted type name size>>;
+    
+    template<class T>
+    void print_type_name_array(); // prints the type name byte by byte, then puts newline
 }
-
-template<class T>
-void print_type_name_array(); // prints the type name byte by byte, then puts newline
 ```
 All spaces, `class`, `struct`, `enum`, `union`, `const`, `__cdecl`, `volatile`, and `T(void)` parameterless `void` will be removed. This is done to better simulate `__PRETTY_FUNCTION__` in other C++ platforms.
 
