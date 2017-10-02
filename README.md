@@ -1,7 +1,7 @@
 # CompileTimeTypeName
 Experimental MSVC `__FUNCSIG__` exploit to get full type name in compile time
 
-I have used a pretty dumb algorithm to extract the type in `__FUNCSIG__`. Sadly because `__FUNCSIG__` isn't working right with pointers.
+I have used a pretty dumb algorithm to extract the type in `__FUNCSIG__`. Sadly because `__FUNCSIG__` isn't working right with pointers and templates.
 
 ## Usage
 ```
